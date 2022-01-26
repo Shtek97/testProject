@@ -1,4 +1,4 @@
-package com.shtek.testProject.controllers.models;
+package com.shtek.testProject.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
