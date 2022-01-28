@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 @RestController
 @RequestMapping("/api/users")
 public class UserRestController {
-/*    private final List<User> USERS = Stream.of(
+    private final List<User> USERS = Stream.of(
             new User(1L, "Ivan", "Ivanov"),
             new User(2L, "Sergey", "Sergeev"),
             new User(3L, "Petr", "Petrov")
@@ -41,6 +41,6 @@ public class UserRestController {
     @PreAuthorize("hasAuthority('users:write')")
     public void deleteById(@PathVariable Long id) {
         this.USERS.removeIf(user -> user.getId().equals(id));
-    }*/
+    }
 }
 

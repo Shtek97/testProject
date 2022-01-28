@@ -1,4 +1,4 @@
-/*package com.shtek.testProject.config;
+package com.shtek.testProject.config;
 
 import com.shtek.testProject.models.Role;
 import org.springframework.context.annotation.Bean;
@@ -59,4 +59,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(12);
     }
-}*/
+}
