@@ -1,4 +1,4 @@
-package com.shtek.testProject.controllers;
+/*package com.shtek.testProject.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,4 +16,4 @@ public class AuthController {
     public String getSuccessPage() {
         return "success";
     }
-}
+}*/

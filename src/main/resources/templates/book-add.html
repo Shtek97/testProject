@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Онлайн библиотека</title>
+</head>
+<body>
+<p>Добавление книги</p>
+    <div>
+        <form action="/bookAdd" method="post">
+            <input type="text" name="nameBook" placeholder="Введите название книги">
+            <input type="text" name="author" placeholder="Введите автора книги">
+            <input type="text" name="genre" placeholder="Введите жанр книги">
+            <button type="submit">Добавить книгу</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование книги</title>
+</head>
+<body>
+    <p>Редактирование книги</p>
+    <div th:each="el : ${book}">
+        <form method="post">
+            <input type="text" th:value="${el.nameBook}" name="nameBook" placeholder="Введите название книги">
+            <input type="text" th:value="${el.author}" name="author" placeholder="Введите автора книги">
+            <input type="text" th:value="${el.genre}" name="genre" placeholder="Введите жанр книги">
+            <button type="submit">Обновить</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Онлайн библиотека</title>
+</head>
+<body>
+  <p>Рады приветствовать</p>
+  <div th:each="el : ${book}">
+    <h3 th:text="${el.nameBook}"/>
+    <p th:text="${el.author}"/>
+    <p th:text="${el.genre}"/>
+    <a th:href="'/' + ${el.id} + '/edit'">Редактировать</a>
+    <form th:action="'/' + ${el.id} + '/remove'" method="post">
+      <button type="submit">Удалить</button>
+    </form>
+  </div>
+</body>
+</html>
