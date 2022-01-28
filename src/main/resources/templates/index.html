@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Онлайн библиотека</title>
+    <link rel="stylesheet" href="./main.css">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="program"></div>
+
+    <script type="text/babel" >
+        const Task = React.createClass({
+            getInitialState: function () {
+                return {edit: false}
+            },
+            edit: function () {
+                this.setState({edit: true})
+            },
+            remove: function () {
+                this.props.deleteBlock(this.props.index);
+            },
+            save: function () {
+                this.props.update(this.refs.newTxt.value, this.props.index);
+                this.setState({edit: false})
+            },
+            rendNorm: function () {
+                return (
+                    <div className="box">
+                        <div className="text">{this.props.children}</div>
+                        <button onClick={this.edit} className="btn light">Редактировать</button>
+                        <button onClick={this.remove} className="btn red">Удалить</button>
+                    </div>
+                );
+            },
+            rendEdit: function () {
+                return (
+                    <div className="box">
+                        <textarea ref="newTxt" defaultValue={this.props.children}/>
+                        <button onClick={this.save} className="btn success">Сохранить</button>
+                    </div>
+                );
+            },
+            render: function () {
+                if (this.state.edit) {
+                    return this.rendEdit();
+                } else {
+                    return this.rendNorm();
+                }
+            }
+        });
+
+        const Field = React.createClass({
+            getInitialState: function () {
+                return {
+                    tasks: [
+                        'Мастер и Маргарита',
+                        'Война и мир',
+                        'Преступление и наказание'
+                    ]
+                }
+            },
+            add: function (text) {
+                const arr = this.state.tasks;
+                arr.push(text);
+                this.setState({tasks: arr});
+            },
+            deleteBlock: function (i) {
+                const arr = this.state.tasks;
+                arr.splice(i, 1);
+                this.setState({tasks: arr});
+            },
+            updateText: function (text, i) {
+                const arr = this.state.tasks;
+                arr[i] = text;
+                this.setState({tasks: arr});
+            },
+            eachTask: function (item, i) {
+                return (
+                    <Task key={i} index={i} update={this.updateText} deleteBlock={this.deleteBlock}>
+                        {item}
+                    </Task>
+                );
+            },
+            render: function () {
+                return (
+                    <div className="field">
+                        <button onClick={this.add.bind(null, 'Книга')} className="btn newt">Новая книга</button>
+                        {this.state.tasks.map(this.eachTask)}
+                    </div>
+                );
+            }
+        });
+
+        const app = document.getElementById("program");
+        ReactDOM.render(<Field />, app);
+    </script>
+</body>
+</html>
